@@ -10,17 +10,17 @@ pipeline {
                      RUN_ID = "${BUILD_ID}"
                  }
                  steps {
-                     sh 'echo BUILD: ${PRUN_ID}'
+                     sh 'echo BUILD: ${RUN_ID}'
                  }
             }
-//             stage('Build udagram-api-feed') {
-//                 agent {
-//                     docker {
-//                         image 'lasserfox/udagram-api-feed:latest'
-//                         reuseNode true
-//                     }
-//                 }
-//             }
+            stage('Build udagram-api-feed') {
+                agent {
+                    docker {
+                        image 'lasserfox/udagram-api-feed:latest'
+                        reuseNode true
+                    }
+                }
+            }
 //             stage('Build udagram-api-user') {
 //                 agent {
 //                     docker {

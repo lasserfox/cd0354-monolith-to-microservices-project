@@ -9,15 +9,9 @@ pipeline {
                      PASSWORD = "${PASSWORD_ENV}"
                      RUN_ID = "${BUILD_ID}"
                  }
-                 node {
-                    checkout scm
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    customImage.inside {
-                        sh 'make test'
-                    }
-                 }
                  steps {
                      sh 'echo BUILD: ${RUN_ID}'
+                     sh 'echo $hostname'
                  }
             }
              stage('Build test and push udagram-api-feed') {
@@ -29,6 +23,7 @@ pipeline {
                  }
                  steps {
                      sh 'echo tesudagram-api-feed: ${RUN_ID}'
+                     sh 'echo $hostname'
                  }
              }
             stage('Build test and push udagram-api-user') {

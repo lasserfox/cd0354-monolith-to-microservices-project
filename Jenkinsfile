@@ -11,15 +11,36 @@ pipeline {
                      sh 'echo ${PASSWORD_ENV}'
                  }
             }
-            stage('Build') {
+            stage('Build udagram-api-feed') {
+                agent {
+                    docker {
+                        image 'lasserfox/udagram-api-feed:latest'
+                        reuseNode true
+                    }
+                }
+            }
+            stage('Build udagram-api-user') {
+                agent {
+                    docker {
+                        image 'lasserfox/udagram-api-user:latest'
+                        reuseNode true
+                    }
+                }
+            }
+            stage('Build udagram-frontend') {
+                agent {
+                    docker {
+                        image 'lasserfox/udagram-frontend:latest'
+                        reuseNode true
+                    }
+                }
+            }
+            stage('Build reverse-proxy') {
                 agent {
                     docker {
                         image 'lasserfox/reverseproxy:latest'
                         reuseNode true
                     }
-                }
-                steps {
-                    sh 'npm run prod'
                 }
             }
 

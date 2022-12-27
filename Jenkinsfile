@@ -21,33 +21,42 @@ pipeline {
                      }
                  }
                  steps {
-                     sh 'echo BUILD: ${RUN_ID}'
+                     sh 'echo tesudagram-api-feed: ${RUN_ID}'
                  }
              }
-//             stage('Build udagram-api-user') {
-//                 agent {
-//                     docker {
-//                         image 'lasserfox/udagram-api-user:latest'
-//                         reuseNode true
-//                     }
-//                 }
-//             }
-//             stage('Build udagram-frontend') {
-//                 agent {
-//                     docker {
-//                         image 'lasserfox/udagram-frontend:latest'
-//                         reuseNode true
-//                     }
-//                 }
-//             }
-//             stage('Build reverse-proxy') {
-//                 agent {
-//                     docker {
-//                         image 'lasserfox/reverseproxy:latest'
-//                         reuseNode true
-//                     }
-//                 }
-//             }
+            stage('Build udagram-api-user') {
+                agent {
+                    docker {
+                        image 'lasserfox/udagram-api-user:latest'
+                        reuseNode true
+                    }
+                }
+                steps {
+                     sh 'echo BUILD: ${RUN_ID}'
+                 }
+            }
+            stage('Build udagram-frontend') {
+                agent {
+                    docker {
+                        image 'lasserfox/udagram-frontend:latest'
+                        reuseNode true
+                    }
+                }
+                steps {
+                     sh 'echo BUILD: ${RUN_ID}'
+                 }
+            }
+            stage('Build reverse-proxy') {
+                agent {
+                    docker {
+                        image 'lasserfox/reverseproxy:latest'
+                        reuseNode true
+                    }
+                }
+                steps {
+                     sh 'echo BUILD: ${RUN_ID}'
+                 }
+            }
 
         }
  }

@@ -19,6 +19,9 @@ pipeline {
                         image 'lasserfox/udagram-api-feed:latest'
                         reuseNode true
                     }
+                    steps {
+                     sh 'echo BUILD: ${RUN_ID}'
+                    }
                 }
             }
 //             stage('Build udagram-api-user') {

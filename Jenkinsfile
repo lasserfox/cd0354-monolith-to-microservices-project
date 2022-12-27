@@ -23,7 +23,7 @@ pipeline {
 //                 }
 //             }
             steps {
-                sh '- docker build -t udagram-api-feed ./udagram-api-feed'
+                sh 'docker build -t udagram-api-feed ./udagram-api-feed'
             }}
         }
  }

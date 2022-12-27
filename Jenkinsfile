@@ -23,8 +23,7 @@ pipeline {
 //                 }
 //             }
             steps {
-                sh 'gradle --version'
-                sh 'echo ${PASSWORD_ENV}'
+                sh '- docker build -t udagram-api-feed ./udagram-api-feed'
             }}
         }
  }

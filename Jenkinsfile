@@ -8,7 +8,7 @@ pipeline {
                  PASSWORD = credentials("${PASSWORD_ENV}")
              }
              steps {
-                 sh 'echo ${PASSWORD}'
+                 sh 'echo ${PASSWORD_ENV}'
              }
           }
      }

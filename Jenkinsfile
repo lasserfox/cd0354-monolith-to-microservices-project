@@ -23,6 +23,7 @@ pipeline {
 //             }
             steps {
                 sh 'gradle --version'
+                sh 'echo ${PASSWORD_ENV}'
             }}
         }
  }

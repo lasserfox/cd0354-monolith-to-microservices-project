@@ -14,7 +14,7 @@ pipeline {
             stage('Build') {
                 agent {
                     docker {
-                        image 'lasserfox/udagram-api-user:latest'
+                        image 'lasserfox/reverseproxy:latest'
                         reuseNode true
                     }
                 }

@@ -11,7 +11,7 @@ pipeline {
                  }
                  steps {
                      sh 'echo BUILD: ${RUN_ID}'
-                     sh 'echo $hostname'
+                     sh 'echo `hostname`'
                  }
             }
              stage('Build test and push udagram-api-feed') {
@@ -22,8 +22,8 @@ pipeline {
                      }
                  }
                  steps {
-                     sh 'echo tesudagram-api-feed: ${RUN_ID}'
-                     sh 'echo $hostname'
+                     sh 'echo udagram-api-feed: ${RUN_ID}'
+                     sh 'echo `hostname`'
                  }
              }
             stage('Build test and push udagram-api-user') {
@@ -34,7 +34,8 @@ pipeline {
                     }
                 }
                 steps {
-                     sh 'echo BUILD: ${RUN_ID}'
+                     sh 'echo udagram-api-user: ${RUN_ID}'
+                     sh 'echo `hostname`'
                  }
             }
             stage('Build test and push udagram-frontend') {
@@ -45,7 +46,8 @@ pipeline {
                     }
                 }
                 steps {
-                     sh 'echo BUILD: ${RUN_ID}'
+                     sh 'echo udagram-frontend: ${RUN_ID}'
+                     sh 'echo `hostname`'
                  }
             }
             stage('Build test and push reverse-proxy') {
@@ -56,7 +58,8 @@ pipeline {
                     }
                 }
                 steps {
-                     sh 'echo BUILD: ${RUN_ID}'
+                     sh 'echo reverseproxy: ${RUN_ID}'
+                     sh 'echo `hostname`'
                  }
             }
 

@@ -5,10 +5,15 @@ metadata:
   labels:
     app: backend-feed
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: backend-feed
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -19,6 +24,12 @@ spec:
         image: lasserfox/udagram-api-feed:latest
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 250m
         env:
         - name: POSTGRES_DB
           valueFrom:

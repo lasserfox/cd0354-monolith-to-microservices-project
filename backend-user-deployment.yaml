@@ -19,6 +19,12 @@ spec:
         image: lasserfox/udagram-api-user:latest
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 250m
         env:
         - name: POSTGRES_DB
           valueFrom:

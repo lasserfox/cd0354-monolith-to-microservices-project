@@ -9,6 +9,11 @@ spec:
   selector:
     matchLabels:
       app: backend-feed
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -19,6 +24,12 @@ spec:
         image: lasserfox/udagram-api-feed:latest
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 250m
         env:
         - name: POSTGRES_DB
           valueFrom:
@@ -40,3 +51,12 @@ spec:
             secretKeyRef:
               name: env-secret
               key: POSTGRES_USERNAME
+        volumeMounts:
+        - name: aws-secret
+          mountPath: "/root/.aws/"
+          readOnly: true
+      restartPolicy: Always
+      volumes:
+      - name: aws-secret
+        secret:
+          secretName: aws-secret

@@ -6,6 +6,6 @@ data:
   AWS_REGION: us-west-2
   POSTGRES_DB: postgres
   POSTGRES_HOST: cdr.cjsbp5xlmpvh.us-west-2.rds.amazonaws.com
-  URL: https://localhost:8100
+  URL: http://a741ad07e398d41a99cc8756cbcdb0a1-555174557.us-west-2.elb.amazonaws.com:8100
 metadata:
   name: env-config
